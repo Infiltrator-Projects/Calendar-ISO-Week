@@ -47,3 +47,7 @@ Run the downloaded `.run --profile aggressive` as an ordinary user. It provision
 Each package owns only this provider and its passive documentation. Its `Replaces` declaration transfers this module from `infiltrator-calendar-resources` on existing machines; other modules and Common source remain intact. Native package versions use `+native1` so a same-version generic package does not replace a local optimized build. See [packaging details](docs/PACKAGING.md).
 
 Translations use the provider-owned gettext domain `infiltrator-calendar-iso-week`. The package ships only its own messages in `/usr/share/locale/<language>/LC_MESSAGES/infiltrator-calendar-iso-week.mo`; Common’s combined translation package is not required. The exact compiled catalogues are checked through the provider ABI before packaging.
+
+## Illustrated user documentation
+
+The native package installs exactly two provider files: `ISO 8601 Week Calendar.so` and `ISO 8601 Week Calendar.pdf`. Translations are embedded in the module; build/source/validation records remain in GitHub and Debian control metadata.

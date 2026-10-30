@@ -29,7 +29,7 @@ CPPFLAGS += -Dg_dgettext=infiltratr_embedded_dgettext \
 CFLAGS ?= -O2 -g
 CFLAGS += -std=c11 -fPIC -fvisibility=hidden -ffunction-sections -fdata-sections \
   -Wall -Wextra -Wpedantic -Werror -Wformat=2 -Wshadow -Wstrict-prototypes \
-  -Wmissing-prototypes -fstack-protector-strong -fno-common
+  -Wmissing-prototypes -Wno-missing-profile -fstack-protector-strong -fno-common
 CXXFLAGS ?= -O2 -g
 CXXFLAGS += -std=c++20 -fPIC -fvisibility=hidden -ffunction-sections -fdata-sections \
   -Wall -Wextra -Wpedantic -Werror -Wformat=2 -Wshadow -fstack-protector-strong -fno-common
@@ -44,7 +44,7 @@ common-check:
 	@test ! -d include/infiltratr || exit 1
 $(COMMON_ARCHIVE): common-check
 	@mkdir -p "$(COMMON_BUILD_DIR)"
-	$(MAKE) -C "$(COMMON_DIR)" CC="$(CC)" BUILD_DIR="$(COMMON_BUILD_DIR)" all
+	$(MAKE) -C "$(COMMON_DIR)" CC="$(CC)" BUILD_DIR="$(COMMON_BUILD_DIR)" CFLAGS="$(CFLAGS) -Wno-missing-profile" all
 $(BUILD_DIR)/native-c/%.o: src/%.c
 	@mkdir -p "$(dir $@)"
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(DEP_CFLAGS) -c "$<" -o "$@"

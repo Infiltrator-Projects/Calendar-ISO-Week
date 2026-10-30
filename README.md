@@ -1,5 +1,7 @@
 # ISO 8601 Week Calendar
 
+**Implementation:** C++20 native provider and built-in multilingual catalogues, linked to authoritative Common; no Python build, installer or runtime.
+
 **InfiltratorOS calendar resource** · **Stable ID:** `iso-week` · **Module:** `ISO 8601 Week Calendar.so`
 
 ISO week-numbering years and weeks derived from proleptic Gregorian civil dates.

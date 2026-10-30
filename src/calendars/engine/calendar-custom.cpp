@@ -107,7 +107,7 @@ iso_fields_from_jdn(gint64 jdn,
         week = 1;
     }
 
-    *fields = (CalendarFields){
+    *fields = CalendarFields{
         .year = year,
         .month = week,
         .day = weekday,
@@ -166,28 +166,17 @@ format_iso(const CalendarFields *fields,
 }
 
 /*
- * Sparse, mode-indexed provider registry.  Empty slots correspond to ICU
- * calendars and are intentionally rejected by custom_provider().
+ * Native C++20 compile-time descriptor for this single independently installed
+ * chronology. No sparse C array or copy of Common's generic registry.
  */
-static const CustomCalendarProvider custom_providers[CALENDAR_CALENDAR_MODE_COUNT] = {
-    [CALENDAR_CALENDAR_MODE_ISO_WEEK] = {
-        iso_fields_from_jdn, iso_fields_to_jdn, iso_month_length,
-        format_iso, default_period_index, default_month_from_period,
-        0, 7, 0, 1, TRUE
-    },
+static const CustomCalendarProvider iso_provider = {
+    iso_fields_from_jdn, iso_fields_to_jdn, iso_month_length,
+    format_iso, default_period_index, default_month_from_period,
+    0, 7, 0, 1, TRUE
 };
-
-static const CustomCalendarProvider *
-custom_provider(CalendarMode mode)
+static const CustomCalendarProvider *custom_provider(CalendarMode mode)
 {
-    (void)mode;
-    const CustomCalendarProvider *provider;
-
-    if (mode < 0 || mode >= CALENDAR_CALENDAR_MODE_COUNT)
-        return NULL;
-
-    provider = &custom_providers[mode];
-    return provider->fields_from_jdn != NULL ? provider : NULL;
+    return mode == CALENDAR_CALENDAR_MODE_ISO_WEEK ? &iso_provider : nullptr;
 }
 
 void
@@ -199,7 +188,7 @@ calendar_custom_fields_from_jdn(CalendarMode mode,
     const CustomCalendarProvider *provider = custom_provider(mode);
 
     g_return_if_fail(fields != NULL);
-    *fields = (CalendarFields){0};
+    *fields = CalendarFields{};
 
     if (provider != NULL)
         provider->fields_from_jdn(jdn, fields);

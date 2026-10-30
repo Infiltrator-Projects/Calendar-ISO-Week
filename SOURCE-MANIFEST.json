@@ -128,10 +128,9 @@
       "selected_definitions": []
     },
     {
-      "path": "src/calendars/engine/calendar-custom.c",
+      "path": "src/calendars/engine/calendar-custom.cpp",
       "source_path": "resources/temporal/src/calendars/engine/calendar-custom.c",
       "source_sha256": "ae44cf27dde6b67f3dd298d46dd11854d748d618ae2bcccdfd97776e9b7e1885",
-      "copied_sha256": "3c6e30a45b3e9e3b8839d30e9af0c7d7a57a00e877cb9847e8a521e3c63a8778",
       "selected_definitions": [
         "calendar_custom_add_months",
         "calendar_custom_add_years",
@@ -154,7 +153,8 @@
         "iso_weeks_in_year",
         "jdn_to_gregorian",
         "positive_modulo"
-      ]
+      ],
+      "ported_to": "C++20"
     },
     {
       "path": "src/calendars/engine/calendar-custom.h",
@@ -332,7 +332,7 @@
       "selected_definitions": []
     }
   ],
-  "copy_method": "C chronology helpers and native C++20 provider share the authoritative Common ABI; Python tooling replaced with C++.",
+  "copy_method": "Native C++20 ISO-week chronology and C++20 provider use the stable Common C ABI and C++ translations.",
   "verification": {
     "repository": "Calendar-ISO-Week",
     "compared_observations": 883,

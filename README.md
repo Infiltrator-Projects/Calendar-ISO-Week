@@ -52,4 +52,4 @@ Translations use the provider-owned gettext domain `infiltrator-calendar-iso-wee
 
 ## Illustrated user documentation
 
-The native package installs exactly two provider files: `ISO 8601 Week Calendar.so` and `ISO 8601 Week Calendar.pdf`. Translations are embedded in the module; build/source/validation records remain in GitHub and Debian control metadata.
+The native package installs exactly two provider files: `ISO 8601 Week Calendar.so` and `Calendar-ISO-Week.pdf`. Translations are embedded in the module; build/source/validation records remain in GitHub and Debian control metadata.

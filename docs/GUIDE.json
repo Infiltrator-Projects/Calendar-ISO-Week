@@ -2,9 +2,9 @@
   "title": "ISO 8601 Week Calendar",
   "intro": "ISO 8601 week dates identify a day by its week-numbering year, week number and weekday instead of month and day.",
   "structure": "Weeks run Monday (1) through Sunday (7). Week 1 contains 4 January, equivalently the year's first Thursday. A week-numbering year has 52 or 53 complete weeks.",
-  "model": "The provider derives week coordinates from proleptic Gregorian civil dates. The Monday of the week containing 4 January starts the ISO year; the next year's corresponding Monday defines its end. A Gregorian date near New Year can belong to an adjacent ISO week year.",
   "example": "Thursday 1 January 2026 is 2026-W01-4; Monday 29 December 2025 is 2026-W01-1.",
   "history": "ISO 8601 standardises dates and week numbering for international scheduling, research and records.",
+  "model": "The provider derives week coordinates from proleptic Gregorian civil dates. The Monday of Week 1 starts the ISO year; the next year's corresponding Monday defines its end. A Gregorian date near New Year can belong to an adjacent ISO week year.",
   "limits": "There are no official ISO month or quarter subdivisions in this week notation. Historical back-projection is mathematical, not evidence of contemporary usage.",
   "sources": [
     "https://github.com/Infiltrator-Projects/Calendar-ISO-Week",
